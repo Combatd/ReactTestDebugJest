@@ -2,40 +2,50 @@ import data from '../../data/courses.json';
 // load the number of data in the file
 const numItems = data.length;
 
-test('Number of Itmes = `12', () => {
-    expect(numItems).toBe(12);
+describe('number tests', () => {
+    test('Number of Itmes = `12', () => {
+        expect(numItems).toBe(12);
+    });
+    
+    test('Number of Items to be greater than or equal to 12', () => {
+        expect(numItems).toBeGreaterThanOrEqual(12);
+    });
 });
 
-test('Number of Items to be greater than or equal to 12', () => {
-    expect(numItems).toBeGreaterThanOrEqual(12);
-});
 
 const dataTest = data[0].title;
 
-test('There is a JS in this title', () => {
-    expect(dataTest).toMatch(/JS/);
+
+describe('string tests', () => {
+    test('There is a JS in this title', () => {
+        expect(dataTest).toMatch(/JS/);
+    });
+    
+    test('The title contains React', () => {
+        expect(dataTest).toContain('React');
+    });
 });
 
-test('The title contains React', () => {
-    expect(dataTest).toContain('React');
-});
 
-// Arrays
+// Arrays and Objects
 const data2 = ['React Native', 'React'];
 
-test('The list of courses contains React Native and React', () => {
-    expect([
-        'React Native',
-        'React',
-        'MeteorJS'
-    ]).toEqual(expect.arrayContaining(data2));
+describe('Arrays and Objects tests', () => {
+    test('The list of courses contains React Native and React', () => {
+        expect([
+            'React Native',
+            'React',
+            'MeteorJS'
+        ]).toEqual(expect.arrayContaining(data2));
+    });
+    
+    test('The first course to have a property title', () => {
+        expect(data[0]).toHaveProperty('title');
+    });
+    
+    test('The first course to have a property views and value of 31,266', () => {
+        expect(data[0]).toHaveProperty('views', '31,266');
+    });
 });
 
-// Objects
-test('The first course to have a property title', () => {
-    expect(data[0]).toHaveProperty('title');
-});
 
-test('The first course to have a property views and value of 31,266', () => {
-    expect(data[0]).toHaveProperty('views', '31,266');
-});
